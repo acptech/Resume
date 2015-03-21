@@ -1,4 +1,4 @@
-//bio
+//Bio valid json
 var bio = {
     "name": "Andy Parchment",
     "role": "Sr. Technical Project Manager",
@@ -12,9 +12,9 @@ var bio = {
     "welcomeMessage": "Welcome to my resume site.",
     "skills": ["Wireless", "Wireline", "Excel", "VBA"],
     "bioPic": "images/fry.jpg"
-};
+}
 
-//work
+//Work valid json
 var work = {
     "jobs": [{
         "employer": "AT&T Mobility",
@@ -23,66 +23,72 @@ var work = {
         "description": "Tier II technical Support"
     }, {
         "employer": "Bellsouth",
-        "title": "ST",
-        "dates": "1979-2000",
+        "title": "Special Services Technician",
+        "dates": "October 1979-2000",
         "description": "Install and repair all telephone lines & equipment in Bellsouth teritory"
     }]
-};
+}
 
-//projects
+
+
+//Projects valid json
 var projects = {
     "projects": [{
-        "title": "sample project 1",
+        "title": "Alarm Migration Project",
         "dates": "2015",
         "description": "This was the first project I did back in 2015",
-		"images": "images/robot.jpg",
+"images": "images/robot.jpg"
     }, {
-        "title": "sample project 2",
+        "title": "LMU Migration Project",
         "dates": "2014",
         "description": "This was the first project I did back in 2014",
-		"images": "images/tank.jpg"
+"images": "images/tank.jpg"
     }]
-};
+}
 
-//education
-var education = {
-	"schools": [
-		{
-			"school": "Stanford University",
-			"location": "Palo Alto, CA",
-			"degree": "Masters",
-			"dates": "2010-2013",
-			"major": ["Geology"]
-		},
-		{
-			"school": "West Virginia University",
-			"location": "Morgantown, WV",
-			"degree": "BS",
-			"dates": "2004-2009",
-			"major": ["Mathematics", "Geology"]
-		}
-	],
-	"onlineCourses": [
-		{
-			"title":"Javascript Basics",
-			"school":"Udacity",
-			"dates": 2015,
-			"url": "https://www.udacity.com/course/ud804"
-		},
-		{
-			"title": "Intro to HTML and CSS",
-			"school": "Udacity",
-			"dates": 2015,
-			"url": "https://www.udacity.com/course/ud304"
-
-		},
-		{
-			"title": "How to Use Git and GitHub",
-			"school": "Udacity",
-			"dates": 2015,
-			"url": "https://www.udacity.com/course/ud775"
-		}
-	]
+//Education valid json
+var education =  {
+    "schools": [
+        {
+            "school": "Stanford University",
+            "location": "Palo Alto, CA",
+            "degree": "Masters",
+            "dates": "2010-2013",
+            "major": [
+                "Geology"
+            ]
+        },
+        {
+            "school": "West Virginia University",
+            "location": "Morgantown, WV",
+            "degree": "BS",
+            "dates": "2004-2009",
+            "major": [
+                "Mathematics",
+                "Geology"
+            ]
+        }
+    ],
+    "onlineCourses": [
+        {
+            "title": "Javascript Basics",
+            "school": "Udacity",
+            "dates": 2015,
+            "url": "https://www.udacity.com/course/ud804"
+        },
+        {
+            "title": "Intro to HTML and CSS",
+            "school": "Udacity",
+            "dates": 2015,
+            "url": "https://www.udacity.com/course/ud304"
+        },
+        {
+            "title": "How to Use Git and GitHub",
+            "school": "Udacity",
+            "dates": 2015,
+            "url": "https://www.udacity.com/course/ud775"
+        }
+    ]
 }
 
 
@@ -97,20 +103,19 @@ function header() {
     var _location = bio.contacts.location;
     var bioPic = bio.bioPic;
     var welcomeMessage = bio.welcomeMessage;
-    var formattedName = HTMLheaderName.replace("%data%", name);
+	var formattedName = HTMLheaderName.replace("%data%", name);
     var formattedRole = HTMLheaderRole.replace("%data%", role);
     var formattedMobile = HTMLmobile.replace("%data%", mobile);
     var formattedEmail = HTMLemail.replace("%data%", email);
     var formattedGithub = HTMLgithub.replace("%data%", github);
     var formattedTwitter = HTMLtwitter.replace("%data%", twitter);
     var formattedLocation = HTMLlocation.replace("%data%", _location);
-
     //var formattedWelcomeMessage = HTMLWelcomeMsg.replace("%data%", welcomeMessage);
     var formattedBioPic = HTMLbioPic.replace("%data%", bioPic);
 
     $("#header").prepend(formattedRole);
     $("#header").prepend(formattedName);
-    $("#topContacts").append(formattedMobile);
+	$("#topContacts").append(formattedMobile);
     $("#topContacts").append(formattedEmail);
     $("#topContacts").append(formattedGithub);
     $("#topContacts").append(formattedTwitter);
@@ -126,124 +131,96 @@ header();
 
 
 
-//Skills
+//Skills displays good
 if (bio.skills.length != 0) {
-    $('#header').append(HTMLskillsStart);
-    var formattedSkill = HTMLskills.replace('%data%', bio.skills[0]);
+	$('#header').append(HTMLskillsStart);
+	var formattedSkill = HTMLskills.replace('%data%', bio.skills[0]);
+	$('#skills').append(formattedSkill);
+    var formattedSkill = HTMLskills.replace('%data%', bio.skills[1]);
+	$('#skills').append(formattedSkill);
+    var formattedSkill = HTMLskills.replace('%data%', bio.skills[2]);
+	$('#skills').append(formattedSkill);
+    var formattedSkill = HTMLskills.replace('%data%', bio.skills[3]);
     $('#skills').append(formattedSkill);
-    formattedSkill = HTMLskills.replace('%data%', bio.skills[1]);
-    $('#skills').append(formattedSkill);
-    formattedSkill = HTMLskills.replace('%data%', bio.skills[2]);
-    $('#skills').append(formattedSkill);
-    formattedSkill = HTMLskills.replace('%data%', bio.skills[3]);
-    $('#skills').append(formattedSkill);
+    
 }
 
-//Jobs
+//Work Experience displays good
 function displayWork() {
     for (job in work.jobs) {
-        $('#workExperience').append(HTMLworkStart);
+		$('#workExperience').append(HTMLworkStart);
         var formattedEmployer = HTMLworkEmployer.replace('%data%', work.jobs[job].employer);
-        var formattedTitle = HTMLworkTitle.replace('%data%', work.jobs[job].title);
-        var formattedEmployerTitle = formattedEmployer + formattedTitle;
-        var formattedWorkDates = HTMLworkDates.replace('%data%', work.jobs[job].date);
+		var formattedTitle = HTMLworkTitle.replace('%data%', work.jobs[job].title);
+		var formattedWorkDates = HTMLworkDates.replace('%data%', work.jobs[job].dates);
         var formattedWorkDescritption = HTMLworkDescription.replace('%data%', work.jobs[job].description);
-        $('.work-entry:last').append(formattedEmployerTitle);
+		var formattedEmployerTitle = formattedEmployer + formattedTitle;
+		$('.work-entry:last').append(formattedEmployerTitle);
         $('.work-entry:last').append(formattedWorkDates);
-        $('.work-entry:last').append(formattedWorkDescritption);
+		$('.work-entry:last').append(formattedWorkDescritption);
     }
 }
 displayWork();
 
-
-//projects
-//projects.display = function() {
-function displayProjects() {
-    for (current in projects.projects) {
-        $('#projects').append(HTMLprojectStart);
-
-        var formatttedProjectTitle = HTMLprojectTitle.replace('%data%', projects.projects[current].title);
-        $('#projects').append(formatttedProjectTitle);
-
-        var formattedProjectDates = HTMLprojectDates.replace('%data%', projects.projects[current].dates);
-        $('#projects').append(formattedProjectDates);
-
-        var formattedProjectDescription = HTMLprojectDescription.replace('%data%', projects.projects[
-            current].description);
-        $('#projects').append(formattedProjectDescription);
-
-       // if (projects.projects[project].images.length > 0) {
-
-        //for (images in projects.projects[current].image) {
-       // var formattedProjectImage = HTMLprojectImage.replace('%data%', projects.projects[current].image[images]);
-         //$('#projects').append(formattedProjectImage);
+//Projects
+projects.display  = function(){
+    for (var project in projects.projects) {
+        var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+        var formattedDates = HTMLprojectDates.replace('%data%', projects.projects[project].dates);
+        var formattedDescription = HTMLprojectDescription.replace('%data%', projects.projects[project].description);
+        $("#projects").append(HTMLprojectStart);
+        $(".project-entry:last").append(formattedTitle);
+        $(".project-entry:last").append(formattedDates);
+        $(".project-entry:last").append(formattedDescription);
+        if (projects.projects[project].images.length > 0) {
+            for (var image in projects.projects[project].images) {
+                var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+                $(".project-entry:last").append(formattedImage);
+            }
+        }
     }
 }
-	//}
-//}
-displayProjects();
+projects.display(); 
 
 
-//education
-education.display = function() {
+
+//Education displays good
+function displayEducation() {
     for (schoolInfo in education.schools) {
-        $("#education").append(HTMLschoolStart);
-
-        var formattedSchool = HTMLschoolName.replace("%data%", education.schools[schoolInfo].school);
-        var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[schoolInfo].degree);
-        var formattedSchoolInformation = formattedSchool + formattedDegree;
-        $(".education-entry:last").append(formattedSchoolInformation);
-
+		var formattedSchool = HTMLschoolName.replace("%data%", education.schools[schoolInfo].school);
+		var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[schoolInfo].degree);
+		var formattedSchoolInformation = formattedSchool + formattedDegree;
         var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[schoolInfo].dates);
-        $(".education-entry:last").append(formattedSchoolDates);
-
-        var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[schoolInfo].location);
-        $(".education-entry:last").append(formattedSchoolLocation);
-
-        var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[schoolInfo].major);
-        $("#education-entry:last").append(formattedMajor);
+		var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[schoolInfo].location);
+		$("#education").append(HTMLschoolStart);
+		$(".education-entry:last").append(formattedSchoolInformation);
+		$(".education-entry:last").append(formattedSchoolLocation);
+		$(".education-entry:last").append(formattedSchoolDates);
+		
     }
-    // $("#education").append(HTMLonlineClasses);
+     $("#education").append(HTMLonlineClasses);
     for (onlineCourse in education.onlineCourses) {
-        $("#education").append(HTMLschoolStart);
-
-        var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse]
-            .title);
-        var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[
-            onlineCourse].school);
+        var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title);
+        var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineCourse].school);
         var formattedOnlineSchoolInfo = formattedOnlineTitle + formattedOnlineSchool;
+		var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlineCourse].dates);
+		var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url);
+		$("#education").append(HTMLschoolStart);
         $(".education-entry:last").append(formattedOnlineSchoolInfo);
-
-        var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlineCourse]
-            .dates);
         $(".education-entry:last").append(formattedOnlineDates);
-
-        var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url);
         $(".education-entry:last").append(formattedURL);
     }
 }
-education.display();
+displayEducation();
 
 
-// creates a Google place search service object. PlacesService does the work of
-// actually searching for location data.
-var service = new google.maps.places.PlacesService(map);
-
-// Iterates through the array of locations, creates a search object for each location
-for (var place in location) {
-
-  // the search request object
-  var request = {
-    query: location[place]
-  };
-
-  // Actually searches the Google Maps API for location data and runs the callback
-  // function with the search results after each search.
-  service.textSearch(request, callback);
-  //map
- function displaymap(){
+//Map
+function displaymap(){
 	$("#mapDiv").append(googleMap);
 }
 
 displaymap();
-}
+
+
+
+
+
