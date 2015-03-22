@@ -110,7 +110,8 @@ function header() {
     var formattedGithub = HTMLgithub.replace("%data%", github);
     var formattedTwitter = HTMLtwitter.replace("%data%", twitter);
     var formattedLocation = HTMLlocation.replace("%data%", _location);
-    //var formattedWelcomeMessage = HTMLWelcomeMsg.replace("%data%", welcomeMessage);
+	var HTMLWelcomeMsg = "<span class='welcome-message'>%data%</span>";
+    var formattedWelcomeMessage = HTMLWelcomeMsg.replace("%data%", welcomeMessage);
     var formattedBioPic = HTMLbioPic.replace("%data%", bioPic);
 
     $("#header").prepend(formattedRole);
@@ -121,7 +122,7 @@ function header() {
     $("#topContacts").append(formattedTwitter);
     $("#topContacts").append(formattedLocation);
     $("#header").append(formattedBioPic);
-    //$("#header").append(formattedWelcomeMessage);
+    $("#header").append(formattedWelcomeMessage);
 }
 header();
 
@@ -171,14 +172,16 @@ projects.display  = function(){
         $(".project-entry:last").append(formattedTitle);
         $(".project-entry:last").append(formattedDates);
         $(".project-entry:last").append(formattedDescription);
-        if (projects.projects[project].images.length > 0) {
-            for (var image in projects.projects[project].images) {
-                var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+		if (projects.projects[project].images) {
+        //if (projects.projects[project].images.length > 0) {
+            //for (var image in projects.projects[project].images) {
+                //var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+				var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images);
                 $(".project-entry:last").append(formattedImage);
             }
         }
     }
-}
+
 projects.display(); 
 
 
